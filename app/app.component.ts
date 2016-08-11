@@ -4,6 +4,7 @@ import { Album } from './album.model';
 
 @Component({
   selector: 'my-app',
+  directives: [AlbumListComponent],
   template: `
     <div class="container">
       <h1>Music Store</h1>
