@@ -30,6 +30,8 @@ import { ShoppingPipe } from './shopping.pipe';
       <album-display *ngFor="#currentAlbum of albumList | shopping:filterShop"
       [album]="currentAlbum">
       </album-display>
+      <button (click)="getTotal()" class="btn btn-lg btn-success">Get Total</button>
+      <h4 *ngIf="totalPrice !==0">{{ "$" + totalPrice}}</h4>
     </div>
   `
 })
@@ -39,6 +41,7 @@ export class AlbumListComponent {
   public filterGenre: string = "all";
   public filterArtist: string = "all";
   public filterShop: string = "true";
+  public totalPrice: number = 0;
 
   onGenreChange(filterOption) {
     this.filterGenre = filterOption;
@@ -46,5 +49,16 @@ export class AlbumListComponent {
 
   onArtistChange(filterOption) {
     this.filterArtist = filterOption;
+  }
+
+  getTotal() {
+    for(var testAlbum of this.albumList) {
+      if (testAlbum.cart) {
+        this.totalPrice +=testAlbum.price;
+      } else {
+        this.totalPrice;
+      }
+    };
+    return this.totalPrice;
   }
 }

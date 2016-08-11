@@ -1,4 +1,4 @@
-# _Music Store Angular2_
+# _Music Store App Using Angular2_
 
 ##### Create an app where a user can upload a description of a restaurant and then other users can rate it by submitting a form
 
