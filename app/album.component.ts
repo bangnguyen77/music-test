@@ -7,7 +7,7 @@ import { Album } from './album.model';
   template: `
     <div>
       <h3>{{ album.name }}, {{ album.artist }}</h3>
-      <h4>{{ album.price }}, {{ album.genre }}</h4>
+      <h4>{{ "$" + album.price }}, {{ album.genre }}</h4>
     </div>
   `
 })

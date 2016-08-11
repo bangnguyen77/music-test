@@ -15,7 +15,13 @@ import { GenrePipe } from './genre.pipe';
       <option value="Pop">All Pop Albums</option>
       <option value="Rock">All Rock Albums</option>
     </select>
-    <album-display *ngFor="#currentAlbum of albumList | genre:filterGenre"
+    <select (change)="onArtistChange($event.target.value)">
+      <option value="all">All Artists</option>
+      <option value="test-artist">All Test Artist's Albums</option>
+      <option value="test-artist2">All Test Artist2's Albums</option>
+      <option value="test-artist3">All Test Artist3's Albums</option>
+    </select>
+    <album-display *ngFor="#currentAlbum of albumList | genre:filterGenre:filterArtist"
     [album]="currentAlbum">
     </album-display>
   `
@@ -24,8 +30,13 @@ import { GenrePipe } from './genre.pipe';
 export class AlbumListComponent {
   public albumList: Album[];
   public filterGenre: string = "all";
+  public filterArtist: string = "all";
 
   onGenreChange(filterOption) {
     this.filterGenre = filterOption;
+  }
+
+  onArtistChange(filterOption) {
+    this.filterArtist = filterOption;
   }
 }
