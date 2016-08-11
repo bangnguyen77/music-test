@@ -18,9 +18,9 @@ export class AppComponent {
   public albums: Album[];
   constructor(){
     this.albums = [
-      new Album("test-name", "test-artist", 9, "test-genre", 0),
-      new Album("test-name2", "test-artist2", 8, "test-genre2", 1),
-      new Album("test-name3", "test-artist3", 7, "test-genre3", 2)
+      new Album("test-name", "test-artist", 9, "Hip Hop", 0),
+      new Album("test-name2", "test-artist2", 8, "Pop", 1),
+      new Album("test-name3", "test-artist3", 7, "Rock", 2)
     ]
   }
 }
