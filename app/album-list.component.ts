@@ -2,12 +2,13 @@ import { Component } from 'angular2/core';
 import { AlbumComponent } from './album.component';
 import { Album } from './album.model';
 import { GenrePipe } from './genre.pipe';
+import { ShoppingPipe } from './shopping.pipe';
 
 @Component({
   selector: 'album-list',
   inputs: ['albumList'],
   directives: [AlbumComponent],
-  pipes: [GenrePipe],
+  pipes: [GenrePipe, ShoppingPipe],
   template: `
     <select (change)="onGenreChange($event.target.value)">
       <option value="all">All Albums</option>
@@ -23,7 +24,13 @@ import { GenrePipe } from './genre.pipe';
     </select>
     <album-display *ngFor="#currentAlbum of albumList | genre:filterGenre:filterArtist"
     [album]="currentAlbum">
-    </album-display>
+    </album-display><br>
+    <div class="shopping jumbotron">
+      <h2>Shopping Cart</h2>
+      <album-display *ngFor="#currentAlbum of albumList | shopping:filterShop"
+      [album]="currentAlbum">
+      </album-display>
+    </div>
   `
 })
 
@@ -31,6 +38,7 @@ export class AlbumListComponent {
   public albumList: Album[];
   public filterGenre: string = "all";
   public filterArtist: string = "all";
+  public filterShop: string = "true";
 
   onGenreChange(filterOption) {
     this.filterGenre = filterOption;
